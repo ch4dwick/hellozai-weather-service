@@ -1,16 +1,14 @@
 # Zai Weather Service
 
 # Controller
+Host: http://localhost:8080
 
 /v1/weather
 
 ## GET
+
 ### Params
 - city = the city to pull the weather
-
-# Service
-
-# Client
 
 # How to run
 
