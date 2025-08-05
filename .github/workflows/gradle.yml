@@ -6,13 +6,15 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
 
 name: Run Unit Test
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+env:
+  WEATHERSTACK_API_KEY: ${{ secrets.WEATHERSTACK_API_KEY }}
+  OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+  
 jobs:
   build:
 
@@ -36,9 +38,6 @@ jobs:
         gradle-version: '8.14.3'
 
     - name: Build with Gradle Wrapper
-      env:
-        WEATHERSTACK_API_KEY: ${{ secrets.WEATHERSTACK_API_KEY }}
-        OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
       run: gradle test -Dapi.config.weatherstack.key=$WEATHERSTACK_API_KEY -Dapi.config.openweather.key=$OPENWEATHER_API_KEY
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
