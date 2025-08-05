@@ -10,6 +10,12 @@ Host: http://localhost:8080
 ### Params
 - city = the city to pull the weather
 
+## Extending the application
+
+### Adding support for new weather service
+
+Implement RemoteWeatherApi interface as a new weather service client. No need to catch http errors as the circuit breaker will handle it. Client response should return an instance of WeatherRemoteApiResponse.
+
 # How to run
 
 ## With local java 24 installed
