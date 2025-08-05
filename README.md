@@ -31,6 +31,13 @@ Unit tests
 
 > ./gradlew test -Dapi.config.weatherstack.key=yourkey -Dapi.config.openweather.key=yourkey
 
+Integration test
+
+> export SPRING_PROFILES_ACTIVE=integration
+> export API_CONFIG_WEATHERSTACK_KEY=yourkey
+> export API_CONFIG_OPENWEATHER_KEY=yourkey
+> ./gradlew integrationTest
+
 ## Docker
 
 > ./gradlew bootJar
