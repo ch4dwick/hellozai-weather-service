@@ -12,8 +12,8 @@ on:
   pull_request:
     branches: [ "main" ]
 env:
-  WEATHERSTACK_API_KEY: ${{ secrets.WEATHERSTACK_API_KEY }}
-  OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+  API_CONFIG_WEATHERSTACK_KEY: ${{ secrets.WEATHERSTACK_API_KEY }}
+  API_CONFIG_OPENWEATHER_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
   
 jobs:
   build:
@@ -32,14 +32,13 @@ jobs:
 
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
-    # - name: Setup Gradle
-    #   uses: gradle/actions/setup-gradle@v4 # v4.0.0
-    #   with:
-    #     gradle-version: '8.14.3'
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4 # v4.0.0
+      with:
+        gradle-version: '8.14.3'
+
     - name: Build with Gradle Wrapper
-      run: ./gradlew test -Dapi.config.weatherstack.key=$WEATHERSTACK_API_KEY -Dapi.config.openweather.key=$OPENWEATHER_API_KEY
+      run: ./gradlew test
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
