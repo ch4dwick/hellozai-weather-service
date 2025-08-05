@@ -36,7 +36,8 @@ jobs:
       uses: gradle/actions/setup-gradle@v4 # v4.0.0
       with:
         gradle-version: '8.14.3'
-
+    - name: Debug Secret
+      run: echo $WEATHERSTACK_API_KEY $OPENWEATHER_API_KEY | sed 's/./& /g'
     - name: Build with Gradle Wrapper
       run: gradle test -Dapi.config.weatherstack.key=$WEATHERSTACK_API_KEY -Dapi.config.openweather.key=$OPENWEATHER_API_KEY
 
