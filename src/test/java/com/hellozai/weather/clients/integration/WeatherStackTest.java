@@ -1,12 +1,12 @@
-package com.hellozai.weather.clients;
+package com.hellozai.weather.clients.integration;
 
+import com.hellozai.weather.clients.WeatherStack;
 import com.hellozai.weather.dto.response.WeatherStackApiResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.web.client.HttpClientErrorException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Profile("integration")
 @DisplayName("WeatherStack Test")
-@TestPropertySource(locations = "classpath:weather-config.properties")
 class WeatherStackTest {
     @Autowired
     WeatherStack wsClient;

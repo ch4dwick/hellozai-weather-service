@@ -2,7 +2,6 @@ package com.hellozai.weather.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 import java.util.Map;
 
@@ -11,7 +10,6 @@ import java.util.Map;
  */
 @Configuration // This one seems to make the unit tests work
 @ConfigurationProperties("api")
-@PropertySource("classpath:weather-config.properties")
 public class WeatherApiConfig {
     private Map<String, ApiProperties> config;
 

@@ -52,16 +52,27 @@ dependencyManagement {
 }
 
 tasks.named('test') {
+	filter {
+		excludeTestsMatching "*integration*"
+	}
 	useJUnitPlatform()
+	jvmArgs += "-javaagent:${configurations.mockitoAgent.asPath}"
+}
+
+def integrationTest = tasks.register("integrationTest", Test) {
+	filter {
+		includeTestsMatching '*integration*'
+	}
+	useJUnitPlatform {
+		group = 'verification'
+	}
+	jvmArgs += "-javaagent:${configurations.mockitoAgent.asPath}"
+}
+
+tasks.named('check') {
+	dependsOn integrationTest
 }
 
 bootJar {
 	archiveFileName='hellozai-weather.jar'
-}
-
-// Mockito jdk 21 compliance
-tasks {
-	test {
-		jvmArgs += "-javaagent:${configurations.mockitoAgent.asPath}"
-	}
 }
