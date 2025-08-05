@@ -21,15 +21,19 @@ Run the included gradle wrapper:
 > ./gradlew bootRun --args='--api.config.weatherstack.key=mykey --api.config.openweather.key=mykey'
 
 Note: Keys are not pushed to repo. Use your own.
+You can also add to weather-config.properties
 
 Unit tests
 
-> ./gradlew test
+> ./gradlew test -Dapi.config.weatherstack.key=yourkey -Dapi.config.openweather.key=yourkey
 
 ## Docker
 
+> ./gradlew bootJar
+
 > docker build -t hellozai-weather:latest .
-> docker run -p 8080:8080 --rm hellozai-weather
+
+> docker run -p 8080:8080 --rm  -e "API_CONFIG_WEATHERSTACK_KEY=yourkey" -e "API_CONFIG_OPENWEATHER_KEY=yourkey" hellozai-weather
 
 # Trade offs
 
@@ -40,3 +44,6 @@ Unit tests
 - add ability to have more than one fallback and iterate over them.
 - Handle potential for more than one result?
 - Skip or choose integration tests
+- API security
+- API metrics
+- externally pulled secrets
