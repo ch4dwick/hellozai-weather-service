@@ -54,6 +54,7 @@ dependencyManagement {
 tasks.named('test') {
 	filter {
 		excludeTestsMatching "*integration*"
+		excludeTestsMatching "*Integration*"
 	}
 	useJUnitPlatform()
 	jvmArgs += "-javaagent:${configurations.mockitoAgent.asPath}"
