@@ -1,4 +1,4 @@
-package com.hellozai.weather.clients.integration;
+package com.hellozai.weather.clients;
 
 import com.hellozai.weather.clients.WeatherStack;
 import com.hellozai.weather.dto.response.WeatherStackApiResponse;
@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Profile("integration")
 @DisplayName("WeatherStack Test")
-class WeatherStackTest {
+class WeatherStackIntegrationTest {
     @Autowired
     WeatherStack wsClient;
 

@@ -1,4 +1,4 @@
-package com.hellozai.weather.clients.integration;
+package com.hellozai.weather.clients;
 
 import com.hellozai.weather.clients.OpenWeather;
 import com.hellozai.weather.dto.response.OpenWeatherApiResponse;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Profile("integration")
 @DisplayName("OpenWeather Test")
-class OpenWeatherTest {
+class OpenWeatherIntegrationTest {
     @Autowired
     OpenWeather owClient;
 

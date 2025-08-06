@@ -61,11 +61,15 @@ tasks.named('test') {
 
 def integrationTest = tasks.register("integrationTest", Test) {
 	filter {
-		includeTestsMatching '*integration*'
+		includeTestsMatching '*.integration.*'
+		includeTestsMatching '*Integration*'
 	}
 	useJUnitPlatform {
 		group = 'verification'
 	}
+	testClassesDirs = sourceSets.test.output.classesDirs
+	classpath = sourceSets.test.runtimeClasspath
+
 	jvmArgs += "-javaagent:${configurations.mockitoAgent.asPath}"
 }
 
